@@ -5,6 +5,11 @@ from models import Bird
 from flask_restful import Resource
 
 
+class Index(Resource):
+    def get(self):
+        return "Birds API"
+
+
 class Birds(Resource):
 
     def get(self):
@@ -18,6 +23,7 @@ class BirdByID(Resource):
         return make_response(jsonify(bird), 200)
 
 
+api.add_resource(Index, '/')
 api.add_resource(Birds, '/birds')
 api.add_resource(BirdByID, '/birds/<int:id>')
 
